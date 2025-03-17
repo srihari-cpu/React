@@ -1,54 +1,40 @@
-import { useState } from "react";
+import { useState, useRef, use } from "react";
 import style from "./AddTodo.module.css";
 import { BiMessageAdd } from "react-icons/bi";
 
 function AddTodo({ onNewItem }) {
-  const [itemName, setItemName] = useState("");
-  const [dueDate, setDueDate] = useState("");
+  const itemNameElement = useRef();
+  const dueDateElement = useRef();
 
-  const handleTodoName = (event) => {
-    setItemName(event.target.value);
-  };
-
-  const handleDueDate = (event) => {
-    setDueDate(event.target.value);
-  };
-
-  const handleNewItem = () => {
+  const handleNewItem = (event) => {
+    const itemName = itemNameElement.current.value;
+    const dueDate = dueDateElement.current.value;
     if (itemName !== "" && dueDate !== "") {
+      event.preventDefault();
       onNewItem(itemName, dueDate);
-      setItemName("");
-      setDueDate("");
+      itemNameElement.current.value = "";
+      dueDateElement.current.value = "";
     }
   };
   return (
     <div className="container text-center">
-      <div className="row sh-row">
+      <form onSubmit={handleNewItem} className="row sh-row">
         <div className="col-sm-5">
           <input
             type="text"
+            ref={itemNameElement}
             placeholder="Enter Todo Here"
-            value={itemName}
-            onChange={() => handleTodoName(event)}
           />
         </div>
         <div className="col-sm-4">
-          <input
-            type="date"
-            value={dueDate}
-            onChange={() => handleDueDate(event)}
-          />
+          <input type="date" ref={dueDateElement} />
         </div>
         <div className="col-sm-2">
-          <button
-            type="button"
-            className="btn btn-success  sh-button"
-            onClick={handleNewItem}
-          >
+          <button type="submit" className="btn btn-success  sh-button">
             <BiMessageAdd />
           </button>
         </div>
-      </div>
+      </form>
     </div>
   );
 }

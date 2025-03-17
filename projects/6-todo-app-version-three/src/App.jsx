@@ -15,8 +15,8 @@ function App() {
   let [todoItems, setTodoItems] = useState(initialTodoItems);
 
   const handleNewItem = (itemName, dueDate) => {
-    const newItem = [...todoItems, { name: itemName, dueDate }];
-    setTodoItems(newItem);
+    //currvalue retrive previous values
+    setTodoItems((currValue) => [...currValue, { name: itemName, dueDate }]);
   };
 
   const handleDeletitem = (itemName) => {
