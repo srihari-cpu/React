@@ -24,7 +24,6 @@ const PostListProvider = ({ children }) => {
     DEFAULT_POST_LIST
   );
   const addPost = (userId, title, body, reactions, tags) => {
-    alert(`${userId},${title},${body},${reactions}-->${tags}`);
     dispatchPostList({
       typeof: "ADD_POST",
       payload: {
