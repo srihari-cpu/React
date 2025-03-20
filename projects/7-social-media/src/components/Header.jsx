@@ -1,4 +1,7 @@
 const Header = () => {
+  const handleOnClick = (val) => {
+    alert(`You clicked on ${val} button`);
+  };
   return (
     <header className="p-3 text-bg-dark">
       <div className="container">
@@ -19,27 +22,27 @@ const Header = () => {
           </a>
 
           <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-            <li>
-              <a href="#" className="nav-link px-2 text-secondary">
+            <li onClick={() => handleOnClick("Home")}>
+              <a href="#" className="nav-link px-2 text-white">
                 Home
               </a>
             </li>
-            <li>
+            <li onClick={() => handleOnClick("Features")}>
               <a href="#" className="nav-link px-2 text-white">
                 Features
               </a>
             </li>
-            <li>
+            <li onClick={() => handleOnClick("Pricing")}>
               <a href="#" className="nav-link px-2 text-white">
                 Pricing
               </a>
             </li>
-            <li>
+            <li onClick={() => handleOnClick("FAQs")}>
               <a href="#" className="nav-link px-2 text-white">
                 FAQs
               </a>
             </li>
-            <li>
+            <li onClick={() => handleOnClick("About")}>
               <a href="#" className="nav-link px-2 text-white">
                 About
               </a>
@@ -59,10 +62,18 @@ const Header = () => {
           </form>
 
           <div className="text-end">
-            <button type="button" className="btn btn-outline-light me-2">
+            <button
+              type="button"
+              className="btn btn-outline-light me-2"
+              onClick={() => handleOnClick("Login")}
+            >
               Login
             </button>
-            <button type="button" className="btn btn-warning">
+            <button
+              type="button"
+              className="btn btn-warning"
+              onClick={() => handleOnClick("Sign-up")}
+            >
               Sign-up
             </button>
           </div>
