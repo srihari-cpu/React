@@ -5,11 +5,13 @@ import CurrentTime from "./Components/CurrentTime";
 function App() {
   return (
     <>
-      <div className="clock-container">
-        <ClockHeading />
-        <ClockSlogan />
-        <CurrentTime />
-      </div>
+      <center>
+        <div className="clock-container">
+          <ClockHeading />
+          <ClockSlogan />
+          <CurrentTime />
+        </div>
+      </center>
     </>
   );
 }
