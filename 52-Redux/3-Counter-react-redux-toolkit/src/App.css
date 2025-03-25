@@ -1,9 +1,17 @@
 .main-container {
   margin-left: 260px;
 }
+.heading-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.heading-symbols {
+  font-size: 40px;
+}
 .control-row {
   margin-top: 10px;
 }
 .number-input {
-  max-width: 110px;
+  max-width: 125px;
 }

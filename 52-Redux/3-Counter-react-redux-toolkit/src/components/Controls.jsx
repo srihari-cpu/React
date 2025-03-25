@@ -1,5 +1,7 @@
 import { useRef } from "react";
 import { useDispatch } from "react-redux";
+import { counterActions } from "../store/counter";
+import { privacyActions } from "../store/privacy";
 
 const Controls = () => {
   const dispatch = useDispatch();
@@ -7,38 +9,28 @@ const Controls = () => {
   const inputElement = useRef();
 
   const handleIncrement = () => {
-    dispatch({ type: "INCREMENT" });
+    dispatch(counterActions.increment());
   };
 
   const handleDecrement = () => {
-    dispatch({ type: "DECREMENT" });
+    dispatch(counterActions.decrement());
   };
 
   const handleReset = () => {
-    dispatch({ type: "RESET" });
+    dispatch(counterActions.reset());
   };
 
   const handlePrivacy = () => {
-    dispatch({ type: "PRIVACY_TOGGLE" });
+    dispatch(privacyActions.toggle());
   };
 
   const handlAdd = () => {
-    dispatch({
-      type: "ADD",
-      payload: {
-        number: inputElement.current.value,
-      },
-    });
+    dispatch(counterActions.add(inputElement.current.value));
     inputElement.current.value = "";
   };
 
   const handlSubtract = () => {
-    dispatch({
-      type: "SUBTRACT",
-      payload: {
-        number: inputElement.current.value,
-      },
-    });
+    dispatch(counterActions.subtract(inputElement.current.value));
     inputElement.current.value = "";
   };
 
@@ -72,7 +64,7 @@ const Controls = () => {
       </div>
       <div className="d-grid gap-2 d-sm-flex justify-content-sm-center control-row">
         <input
-          type="text"
+          type="number"
           ref={inputElement}
           placeholder="Enter number"
           className="number-input"
